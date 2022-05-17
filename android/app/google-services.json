@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "720214528634",
+    "project_id": "zeno-staging",
+    "storage_bucket": "zeno-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720214528634:android:d95da2bf57d9e0189361c3",
+        "android_client_info": {
+          "package_name": "com.example.demo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720214528634-a4p7bkk2io4gls97nln63sohm85gv11o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-fmVYYhdAi1swV4ILkczAXHlS11X0nv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720214528634-a4p7bkk2io4gls97nln63sohm85gv11o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "720214528634-g6e5uhqjpqfvne3uv4gs812gim9datlt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.demoApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
