@@ -1,6 +1,4 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
+import 'package:demo_app/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -8,6 +6,28 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Home'));
+    final AuthService auth = AuthService();
+
+    return Scaffold(
+      backgroundColor: Colors.brown[50],
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: Colors.brown[400],
+        elevation: 0.0,
+        actions: <Widget>[
+          TextButton.icon(
+            // <-- TextButton
+            onPressed: () {
+              auth.signOut();
+            },
+            icon: const Icon(
+              Icons.person,
+              size: 20.0,
+            ),
+            label: const Text('Logout'),
+          ),
+        ],
+      ),
+    );
   }
 }

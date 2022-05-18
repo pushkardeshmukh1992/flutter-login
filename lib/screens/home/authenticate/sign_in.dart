@@ -21,7 +21,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
-          title: Text('Sign In')),
+          title: const Text('Sign In')),
       body: Container(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: ElevatedButton(
@@ -30,10 +30,8 @@ class _SignInState extends State<SignIn> {
               dynamic result = await _auth.signInAnon();
 
               if (result == null) {
-                print('error signing in');
               } else {
-                print('signed in');
-                print(result);
+                // print(result.uid);
               }
             },
             child: const Text('Sign In Anon'),
