@@ -1,4 +1,5 @@
 import 'package:demo_app/screens/home/authenticate/authenticate.dart';
+import 'package:demo_app/screens/home/authenticate/sign_in.dart';
 import 'package:demo_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return either Home or Authenticate widget
-    return Authenticate();
+    return SignIn();
   }
 }
