@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                       });
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -91,7 +91,8 @@ class _RegisterState extends State<Register> {
                     child: const Text('Register'),
                   ),
                   const SizedBox(height: 12),
-                  Text(error, style: TextStyle(color: Colors.red, fontSize: 14))
+                  Text(error,
+                      style: const TextStyle(color: Colors.red, fontSize: 14))
                 ],
               ))),
     );
