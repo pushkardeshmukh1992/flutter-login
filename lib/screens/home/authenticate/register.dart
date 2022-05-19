@@ -1,15 +1,20 @@
-import 'package:demo_app/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:demo_app/services/auth.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
+
+  final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 20),
+      minimumSize: const Size.fromHeight(48), // NEW,
+      primary: Colors.pink[400]);
 
   // text field state
   String email = '';
@@ -17,17 +22,12 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20),
-        minimumSize: const Size.fromHeight(48), // NEW,
-        primary: Colors.pink[400]);
-
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
-          title: const Text('Sign In')),
+          title: const Text('Register')),
       body: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Form(
@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                   print(email);
                   print(password);
                 },
-                child: const Text('Sign In'),
+                child: const Text('Register'),
                 style: buttonStyle,
               )
             ],
