@@ -12,6 +12,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20),
@@ -21,6 +22,7 @@ class _RegisterState extends State<Register> {
   // text field state
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,36 +49,51 @@ class _RegisterState extends State<Register> {
       body: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Form(
+              key: _formKey,
               child: Column(
-            children: <Widget>[
-              SizedBox(height: 20),
-              TextFormField(
-                onChanged: (val) {
-                  setState(() {
-                    email = val;
-                  });
-                },
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                obscureText: true,
-                onChanged: (val) {
-                  setState(() {
-                    password = val;
-                  });
-                },
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () async {
-                  print(email);
-                  print(password);
-                },
-                child: const Text('Register'),
-                style: buttonStyle,
-              )
-            ],
-          ))),
+                children: <Widget>[
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                    onChanged: (val) {
+                      setState(() {
+                        email = val;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    validator: (val) => val!.length < 6
+                        ? 'Enter a password 6+ chars long'
+                        : null,
+                    obscureText: true,
+                    onChanged: (val) {
+                      setState(() {
+                        password = val;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        dynamic result = await _auth
+                            .registerWithEmailAndPassword(email, password);
+
+                        if (result == null) {
+                          setState(() {
+                            error = 'Please supply a valid email';
+                          });
+                        }
+                      }
+                    },
+                    style: buttonStyle,
+                    child: const Text('Register'),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(error, style: TextStyle(color: Colors.red, fontSize: 14))
+                ],
+              ))),
     );
   }
 }
