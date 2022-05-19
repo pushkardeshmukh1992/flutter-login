@@ -13,8 +13,10 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+    final ButtonStyle style = ElevatedButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 20),
+      minimumSize: const Size.fromHeight(48), // NEW
+    );
 
     return Scaffold(
       backgroundColor: Colors.brown[100],
@@ -23,7 +25,7 @@ class _SignInState extends State<SignIn> {
           elevation: 0.0,
           title: const Text('Sign In')),
       body: Container(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: ElevatedButton(
             style: style,
             onPressed: () async {
