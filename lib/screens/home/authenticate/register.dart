@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:demo_app/services/auth.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  final Function toggleView;
+
+  Register({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
@@ -25,9 +27,23 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          title: const Text('Register')),
+        backgroundColor: Colors.brown[400],
+        elevation: 0.0,
+        title: const Text('Register'),
+        actions: <Widget>[
+          TextButton.icon(
+            // <-- TextButton
+            onPressed: () {
+              widget.toggleView();
+            },
+            icon: const Icon(
+              Icons.person,
+              size: 20.0,
+            ),
+            label: const Text('Sign In'),
+          ),
+        ],
+      ),
       body: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Form(

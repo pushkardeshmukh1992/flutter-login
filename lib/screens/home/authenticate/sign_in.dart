@@ -2,7 +2,11 @@ import 'package:demo_app/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+  // const SignIn({Key? key}) : super(key: key);
+
+  final Function toggleView;
+
+  SignIn({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -25,15 +29,29 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          title: const Text('Sign In')),
+        backgroundColor: Colors.brown[400],
+        elevation: 0.0,
+        title: const Text('Sign In'),
+        actions: <Widget>[
+          TextButton.icon(
+            // <-- TextButton
+            onPressed: () {
+              widget.toggleView();
+            },
+            icon: const Icon(
+              Icons.person,
+              size: 20.0,
+            ),
+            label: const Text('Register'),
+          ),
+        ],
+      ),
       body: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Form(
               child: Column(
             children: <Widget>[
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 onChanged: (val) {
                   setState(() {
@@ -41,7 +59,7 @@ class _SignInState extends State<SignIn> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 obscureText: true,
                 onChanged: (val) {
@@ -50,14 +68,14 @@ class _SignInState extends State<SignIn> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
                   print(email);
                   print(password);
                 },
-                child: const Text('Sign In'),
                 style: buttonStyle,
+                child: const Text('Sign In'),
               )
             ],
           ))),
