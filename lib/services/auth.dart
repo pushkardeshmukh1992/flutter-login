@@ -36,6 +36,7 @@ class AuthService {
           email: email, password: password);
       return _userFromFirebaseUser(userCredential.user);
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
       return null;
     }
@@ -48,6 +49,7 @@ class AuthService {
           email: email, password: password);
       return _userFromFirebaseUser(userCredential.user);
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
       return null;
     }
