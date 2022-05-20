@@ -6,7 +6,7 @@ import 'package:demo_app/shared/loading.dart';
 class Register extends StatefulWidget {
   final Function toggleView;
 
-  Register({Key? key, required this.toggleView}) : super(key: key);
+  const Register({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
